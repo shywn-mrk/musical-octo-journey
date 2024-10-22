@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: firouzeh_digital_local_docs
+    container_name: firouzeh_digital_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./firouzeh_digital:/app/firouzeh_digital:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
